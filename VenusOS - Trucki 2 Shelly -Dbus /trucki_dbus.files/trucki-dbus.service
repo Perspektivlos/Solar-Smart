@@ -1,0 +1,17 @@
+[Unit]
+Description=Trucki2Shelly dbus Service für VenusOS
+After=network-online.target dbus.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/python3 /data/trucki/trucki_dbus.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=trucki-dbus
+
+[Install]
+WantedBy=multi-user.target
